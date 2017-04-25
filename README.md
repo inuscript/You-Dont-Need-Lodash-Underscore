@@ -89,6 +89,7 @@ For more information, see [Configuring the ESLint Plugin](configuring.md)
 1. [_.lastIndexOf](#_lastindexof)
 1. [_.reverse](#_reverse)
 1. [_.without](#_without)
+1. [_.head and _.tail](#_head-and-_tail)
 
 **[Collection*](#collection*)**
 
@@ -404,6 +405,39 @@ Returns an array where matching items are filtered.
 ![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
 :-: | :-: | :-: | :-: | :-: |
   1.0 ✔  |  1.5 ✔ |  9 ✔ |  ✔ |  ✔  |
+
+**[⬆ back to top](#quick-links)**
+
+### _.head and _.tail
+Gets the first element or all but the first element.
+
+  ```js
+  const array = [1, 2, 3]
+
+  // Underscore: _.first, _.head, _.take
+  // Lodash: _.first, _.head
+  _.head(array)
+  // output: 1
+
+  // Underscore: _.rest, _.tail, _.drop
+  // Lodash: _.tail
+  _.tail(array)
+  // output: [2, 3]
+
+
+  // Native
+  const [ head, ...tail ] = array
+  console.log(head)
+  // output: 1
+  console.log(tail)
+  // output [2, 3]
+  ```
+
+### Browser Support
+
+![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: |
+  49 ✔  |  34 ✔ |  Not Supported |  Not Supported |  ✔  |
 
 **[⬆ back to top](#quick-links)**
 
