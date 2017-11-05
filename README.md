@@ -84,12 +84,16 @@ For more information, see [Configuring the ESLint Plugin](configuring.md)
 1. [_.fill](#_fill)
 1. [_.find](#_find)
 1. [_.findIndex](#_findindex)
+1. [_.flatten](#_flatten)
+1. [_.flattenDeep](#_flattendeep)
 1. [_.head and _.tail](#_head-and-_tail)
 1. [_.indexOf](#_indexof)
 1. [_.join](#_join)
 1. [_.lastIndexOf](#_lastindexof)
 1. [_.reverse](#_reverse)
 1. [_.without](#_without)
+1. [_.slice](#_slice)
+1. [_.isArray](#_isarray)
 
 **[Collection*](#collection*)**
 
@@ -132,6 +136,7 @@ then Lodash/Underscore is the better option.*
 1. [_.toLower](#_tolower)
 1. [_.toUpper](#_toupper)
 1. [_.trim](#_trim)
+1. [_.replace](#_replace)
 
 ## Array
 
@@ -293,6 +298,55 @@ Returns the index of the first element in the array that satisfies the provided 
 ![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
 :-: | :-: | :-: | :-: | :-: |
   45.0 ✔ | 25.0 ✔ |  Not supported  |  Not supported |  7.1 ✔ |
+
+**[⬆ back to top](#quick-links)**
+
+### _.flatten
+
+Flattens array a single level deep.
+
+  ```js
+  // Underscore/Lodash
+  _.flatten([1, [2, [3, [4]], 5]]);
+  // => [1, 2, [3, [4]], 5]
+
+  // Native
+  const flatten = [1, [2, [3, [4]], 5]].reduce( (a, b) => [...a, ...b], [])
+  // => [1, 2, [3, [4]], 5]
+
+  ```
+
+#### Browser Support
+
+![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: |
+  46.0 ✔ | 16.0 ✔ |  Not supported  |  Not supported |  7.1 ✔ |
+
+**[⬆ back to top](#quick-links)**
+
+### _.flattenDeep
+
+Recursively flattens array.
+
+  ```js
+  // Underscore/Lodash
+  _.flattenDeep([1, [2, [3, [4]], 5]]);
+  // => [1, 2, 3, 4, 5]
+
+  // Native
+  const flattenDeep = (arr) => Array.isArray(arr)
+    ? arr.reduce( (a, b) => [...flattenDeep(a), ...flattenDeep(b)] , [])
+    : [arr]
+
+  flattenDeep([1, [[2], [3, [4]], 5]])
+  // => [1, 2, 3, 4, 5]
+  ```
+
+#### Browser Support
+
+![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: |
+  46.0 ✔ | 16.0 ✔ |  Not supported  |  Not supported |  7.1 ✔ |
 
 **[⬆ back to top](#quick-links)**
 
@@ -458,6 +512,52 @@ Returns an array where matching items are filtered.
 ![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
 :-: | :-: | :-: | :-: | :-: |
   1.0 ✔  |  1.5 ✔ |  9 ✔ |  ✔ |  ✔  |
+
+**[⬆ back to top](#quick-links)**
+
+### _.slice
+Returns a shallow copy of a portion of an array into a new array object selected from `begin` to `end` (`end` not included)
+
+  ```js
+  // Lodash
+  var array = [1, 2, 3, 4]
+  console.log(_.slice(array, 1, 3))
+  // output: [2, 3]
+
+  // Native
+  var array = [1, 2, 3, 4]
+  console.log(array.slice(1, 3));
+  // output: [2, 3]
+  ```
+
+#### Browser Support
+
+ ![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+ :-: | :-: | :-: | :-: | :-: |
+  ✔  |  ✔  |  ✔  |  ✔  |  ✔  |
+
+**[⬆ back to top](#quick-links)**
+
+### _.isArray
+Returns true if given value is an array.
+
+  ```js
+  // Lodash
+  var array = []
+  console.log(_.isArray(array))
+  // output: true
+
+  // Native
+  var array = []
+  console.log(Array.isArray(array));
+  // output: true
+  ```
+
+  #### Browser Support
+
+ ![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+ :-: | :-: | :-: | :-: | :-: |
+  5 ✔  |  4 ✔  |  9 ✔  |  10.5 ✔  | 5 ✔  |
 
 **[⬆ back to top](#quick-links)**
 
@@ -1163,11 +1263,61 @@ Removes the leading and trailing whitespace characters from a string.
 
 **[⬆ back to top](#quick-links)**
 
+### _.replace
+returns a new string with some or all matches of a `pattern` replaced by a `replacement`
+
+  ```js
+  // Lodash
+  var re = /apples/gi;
+  var str = 'Apples are round, and apples are juicy.';
+  var newstr = _.replace(str, re, 'oranges');
+  console.log(newstr);
+  // output: 'oranges are round, and oranges are juicy.'
+
+  // Native
+  var re = /apples/gi;
+  var str = 'Apples are round, and apples are juicy.';
+  var result = str.replace(re, 'oranges');
+  console.log(result);
+  // output: 'oranges are round, and oranges are juicy.'
+  ```
+
+#### Browser Support
+
+![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: |
+  ✔  |  ✔ |  ✔  |  ✔ |  ✔  |
+
+**[⬆ back to top](#quick-links)**
+
 ## Reference
 
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference)
 * [Underscore.js](http://underscorejs.org)
 * [Lodash.js](https://lodash.com/docs)
+
+### _.uniq
+Removes all duplicates entries from an array.
+
+  ```js
+  // Underscore/Lodash
+  var result = _.uniq([1, 2, 1, 4, 1, 3]);
+  console.log(result)
+  // output: [1, 2, 4, 3]
+
+  // Native
+  var result = [... new Set([1, 2, 1, 4, 1, 3])]
+  console.log(result)
+  // output: [1, 2, 4, 3]
+  ```
+
+#### Browser Support
+
+![Chrome][chrome-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: |
+  38 ✔  |  13 ✔ |  11 ✔  |  25 ✔ |  7.1 ✔  |
+
+**[⬆ back to top](#quick-links)**
 
 
 ## Inspired by:

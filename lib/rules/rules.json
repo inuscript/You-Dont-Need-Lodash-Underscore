@@ -25,7 +25,7 @@
         "ES6": true
     },
     "find": {
-        "compatible": true,
+        "compatible": false,
         "alternative": "Array.prototype.find()",
         "ES6": true
     },
@@ -35,9 +35,13 @@
         "ES6": true
     },
     "findIndex": {
-        "compatible": true,
+        "compatible": false,
         "alternative": "Array.prototype.findIndex()",
         "ES6": true
+    },
+    "isArray": {
+        "compatible": true,
+        "alternative": "Array.isArray()"
     },
 
     "each": {
@@ -114,6 +118,10 @@
         "alternative": "Array.prototype.includes()",
         "ES6": true
     },
+    "slice": {
+        "compatible": true,
+        "alternative": "Array.prototype.slice()"
+    },
 
     "isNaN": {
         "ruleName": "is-nan",
@@ -173,5 +181,14 @@
         "compatible": true,
         "alternative": "String.prototype.repeat()",
         "ES6": true
+    },
+    "uniq": {
+        "compatible": true,
+        "alternative": "[... new Set(arr)]",
+        "ES6": true
+    },
+    "replace": {
+        "compatible": true,
+        "alternative": "String.prototype.replace()"
     }
 }
