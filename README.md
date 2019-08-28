@@ -93,6 +93,7 @@ For more information, see [Configuring the ESLint Plugin](configuring.md)
 1. [_.flatten](#_flatten)
 1. [_.flattenDeep](#_flattendeep)
 1. [_.fromPairs](#_frompairs)
+1. [_.groupBy](#_groupby)
 1. [_.head and _.tail](#_head-and-_tail)
 1. [_.indexOf](#_indexof)
 1. [_.intersection](#_intersection)
@@ -585,6 +586,39 @@ Returns an object composed from key-value pairs.
   ✔  |  ✔ | 3.0 ✔ |  9.0 ✔  |  10.5 ✔ |  4.0 ✔ |
 
 **[⬆ back to top](#quick-links)**
+
+
+### _.groupBy
+Creates an object composed of keys generated from the results of running each element of collection thru iteratee.
+
+  ```js
+  // Lodash
+  var result = _.groupBy([6.1, 4.2, 6.3], Math.floor);
+  console.log(result)
+  // { '4': [4.2], '6': [6.1, 6.3] }
+
+  // Native
+  var result = [6.1, 4.2, 6.3].reduce((acc, curr) => {
+    const group = Math.floor(curr) // iteratee
+    const target = acc[group] || []
+    return {
+      ...acc,
+      [group]: [...target, curr]
+    }
+  })
+  console.log(result)
+  // { '4': [4.2], '6': [6.1, 6.3] }
+
+  ```
+
+#### Browser Support for `Array.prototype.reduce()`
+
+![Chrome][chrome-image] | ![Edge][edge-image] | ![Firefox][firefox-image] | ![IE][ie-image] | ![Opera][opera-image] | ![Safari][safari-image]
+:-: | :-: | :-: | :-: | :-: | :-: |
+  ✔  | ✔  | 3.0 ✔ |  9.0 ✔  |  10.5 ✔ |  4.0 ✔ |
+
+**[⬆ back to top](#quick-links)**
+
 
 ### _.head and _.tail
 Gets the first element or all but the first element.
