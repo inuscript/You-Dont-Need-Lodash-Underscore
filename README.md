@@ -599,7 +599,7 @@ Creates an object composed of keys generated from the results of running each el
 
   // Native
   var result = [6.1, 4.2, 6.3].reduce((acc, curr) => {
-    const group = Math.floor(curr) // iteratee
+    const group = Math.floor(curr) // iteratee: Do customize you need
     const target = acc[group] || []
     return {
       ...acc,
