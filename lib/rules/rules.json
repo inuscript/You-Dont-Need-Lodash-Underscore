@@ -3,6 +3,14 @@
         "compatible": true,
         "alternative": "Array.prototype.concat()"
     },
+    "drop": {
+        "compatible": true,
+        "alternative": "Array.prototype.slice()"
+    },
+    "dropRight": {
+        "compatible": true,
+        "alternative": "Array.prototype.slice()"
+    },
     "indexOf": {
         "compatible": true,
         "alternative": "Array.prototype.indexOf()"
@@ -51,14 +59,13 @@
         "compatible": true,
         "alternative": "Array.isArray()"
     },
-
     "each": {
         "compatible": false,
-        "alternative": "Array.prototype.forEach()"
+        "alternative": "Array.prototype.forEach() or Object.entries().forEach()"
     },
     "forEach": {
         "compatible": false,
-        "alternative": "Array.prototype.forEach()"
+        "alternative": "Array.prototype.forEach() or Object.entries().forEach()"
     },
     "every": {
         "compatible": false,
@@ -130,14 +137,46 @@
         "compatible": true,
         "alternative": "Array.prototype.slice()"
     },
-
+    "takeRight": {
+        "compatible": false,
+        "alternative": "Array.prototype.slice()"
+    },
+    "bind": {
+        "ruleName": "bind",
+        "compatible": true,
+        "alternative": "Function.prototype.bind()"
+    },
+    "isFinite": {
+        "compatible": true,
+        "alternative": "Number.isFinite()"
+    },
+    "isInteger": {
+        "ruleName": "is-integer",
+        "compatible": true,
+        "alternative": "Number.isInteger()",
+        "ES6": true
+    },
     "isNaN": {
         "ruleName": "is-nan",
         "compatible": true,
         "alternative": "Number.isNaN()",
         "ES6": true
     },
-
+    "isNil": {
+        "ruleName": "is-nil",
+        "compatible": true,
+        "alternative": "value === null || value === undefined"
+    },
+    "isNull": {
+        "ruleName": "is-null",
+        "compatible": true,
+        "alternative": "value === null"
+    },
+    "isUndefined": {
+        "ruleName": "is-undefined",
+        "compatible": true,
+        "alternative": "value === undefined"
+    },
     "keys": {
         "compatible": true,
         "alternative": "Object.keys()"
@@ -172,7 +211,25 @@
         "alternative": "Object.entries()",
         "ES6": true
     },
-
+    "get": {
+        "compatible": false,
+        "alternative": "optional chaining to get nested values and nullish coalescing operator for fallback values",
+        "ES11": true
+    },
+    "split": {
+        "compatible": true,
+        "alternative": "String.prototype.split()"
+    },
+    "startsWith": {
+        "ruleName": "starts-with",
+        "compatible": true,
+        "alternative": "String.prototype.startsWith()"
+    },
+    "endsWith": {
+        "ruleName": "ends-with",
+        "compatible": true,
+        "alternative": "String.prototype.endsWith()"
+    },
     "toLower": {
         "compatible": true,
         "alternative": "String.prototype.toLowerCase()"
@@ -184,6 +241,16 @@
     "trim": {
         "compatible": true,
         "alternative": "String.prototype.trim()"
+    },
+    "padStart": {
+        "compatible": true,
+        "alternative": "String.prototype.padStart()",
+        "ES6": true
+    },
+    "padEnd": {
+        "compatible": true,
+        "alternative": "String.prototype.padEnd()",
+        "ES6": true
     },
     "repeat": {
         "compatible": true,
@@ -198,5 +265,30 @@
     "replace": {
         "compatible": true,
         "alternative": "String.prototype.replace()"
+    },
+    "omit": {
+        "compatible": true,
+        "alternative": "{a, b, c, ...notOmittedValues}",
+        "ES6": true
+    },
+    "flatten": {
+        "compatible": true,
+        "alternative": "Array.prototype.reduce((a,b) => a.concat(b), [])"
+    },
+    "throttle": {
+        "compatible": true,
+        "alternative": "Example of native implementation: https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore#_throttle"
+    },
+    "isString": {
+        "compatible": true,
+        "alternative": "str && typeof str.valueOf() === \"string\""
+    },
+    "castArray": {
+        "compatible": true,
+        "alternative": "Array.isArray(arr) ? arr : [arr]"
+    },
+    "isFunction": {
+        "compatible": true,
+        "alternative": "typeof func === \"function\""
     }
 }
